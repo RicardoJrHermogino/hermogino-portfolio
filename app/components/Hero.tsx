@@ -1,7 +1,6 @@
 import {
   Box,
   Container,
-  Typography,
   Button,
   IconButton,
   Stack,
@@ -15,6 +14,8 @@ import {
   Mail as MailIcon,
 } from "@mui/icons-material";
 import BlurText from "./ui/BlurText/BlurText";
+import TextType from './ui/TextType/TextType';
+
 
 
 const bounce = keyframes`
@@ -202,21 +203,16 @@ export function Hero() {
                 stepDuration={0.4} // animation speed
                 className="hero-title" // optional, for custom styling
               />
+              <TextType 
+                text={[
+                  "Code + Design = Experiences"
+                ]}
+                typingSpeed={75}
+                pauseDuration={100}
+                showCursor={true}
+                cursorCharacter="_"
+              />
 
-              <Typography
-                variant="h6"
-                color="text.secondary"
-                sx={{
-                  maxWidth: '1000px',
-                  mx: 'auto',
-                  fontSize: { xs: '1.1rem', sm: '1.25rem' },
-                  fontWeight: 400,
-                  lineHeight: 1.6,
-                }}
-              >
-                Passionate about creating exceptional digital experiences through clean code, 
-                innovative design, and cutting-edge technologies.
-              </Typography>
             </Stack>
 
             <Stack

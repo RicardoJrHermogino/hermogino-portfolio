@@ -8,11 +8,11 @@ import {
   Card,
   CardContent,
   Chip,
-  Grid,
   Stack,
   List,
   ListItem,
   ListItemText,
+  Grid,
 } from "@mui/material";
 import { 
   Code as CodeIcon,
@@ -92,7 +92,7 @@ export function About() {
         </Box>
 
         <Grid container spacing={8} alignItems="center">
-          <Grid item xs={12} lg={6}>
+          <Grid xs={12} lg={6}>
             <Box sx={{ mb: 4 }}>
               <Typography 
                 variant="h4" 
@@ -107,7 +107,7 @@ export function About() {
               </Typography>
               <Grid container spacing={3}>
                 {expertise.map((item, index) => (
-                  <Grid item xs={12} sm={6} key={index}>
+                  <Grid xs={12} sm={6} key={index}>
                     <Card 
                       sx={{ 
                         p: 3,
@@ -163,7 +163,7 @@ export function About() {
             </Box>
           </Grid>
 
-          <Grid item xs={12} lg={6}>
+          <Grid xs={12} lg={6}>
             <Stack spacing={4}>
               <Box>
                 <Typography 
