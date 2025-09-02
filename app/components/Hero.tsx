@@ -6,6 +6,7 @@ import {
   Stack,
   keyframes,
   useTheme,
+  Typography
 } from "@mui/material";
 import {
   KeyboardArrowDown as ChevronDownIcon,
@@ -14,8 +15,7 @@ import {
   Mail as MailIcon,
 } from "@mui/icons-material";
 import BlurText from "./ui/BlurText/BlurText";
-import TextType from './ui/TextType/TextType';
-
+import AnimatedContent from './ui/AnimatedContent/AnimatedContent'
 
 
 const bounce = keyframes`
@@ -66,6 +66,18 @@ const wormMove2 = keyframes`
   }
 `;
 
+const wormMove3 = keyframes`
+  0% { 
+    d: path("M0,40 Q80,20 160,40 T320,40 T480,40 T640,40");
+  }
+  50% { 
+    d: path("M0,40 Q80,80 160,20 T320,80 T480,20 T640,40");
+  }
+  100% { 
+    d: path("M0,40 Q80,20 160,40 T320,40 T480,40 T640,40");
+  }
+`;
+
 const float = keyframes`
   0%, 100% { transform: translateX(0px) translateY(0px); }
   25% { transform: translateX(-20px) translateY(-10px); }
@@ -109,7 +121,7 @@ export function Hero() {
         position: 'relative',
         background: isDark 
           ? 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)'
-          : 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+          : '#f4f4f4',
         overflow: 'hidden',
         pt: 8,
       }}
@@ -136,6 +148,30 @@ export function Hero() {
           d="M0,50 Q50,10 100,50 T200,50 T300,50 T400,50"
           style={{
             animation: `${wormMove1} 6s ease-in-out infinite`,
+          }}
+        />
+      </Box>
+      <Box
+        component="svg"
+        sx={{
+          position: 'absolute',
+          top: '35%',
+          left: 0,
+          width: '100%',
+          height: '100%',
+          opacity: 0.25,
+          animation: `${float} 14s ease-in-out infinite`,
+        }}
+        viewBox="0 0 640 100"
+        preserveAspectRatio="none"
+      >
+        <path
+          fill="none"
+          stroke={isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.05)'}
+          strokeWidth="1.8"
+          d="M0,40 Q80,20 160,40 T320,40 T480,40 T640,40"
+          style={{
+            animation: `${wormMove3} 9s ease-in-out infinite alternate`,
           }}
         />
       </Box>
@@ -191,43 +227,95 @@ export function Hero() {
       </Box>
 
       {/* Content */}
-      <Container maxWidth="md" sx={{ position: 'relative', zIndex: 10 }}>
-        <Box sx={{ textAlign: 'center' }}>
-          <Stack spacing={6}>
-            <Stack spacing={3}>
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 10, px: { xs: 2, sm: 3, md: 4 } }}>
+        <AnimatedContent
+          distance={100}
+          direction="vertical"
+          reverse={true}
+          duration={0.8}
+          ease="power3.out"
+          initialOpacity={0.2}
+          animateOpacity
+          scale={1}
+          threshold={0.1}
+          delay={0.3}
+        >
+        <Box 
+          sx={{ 
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Stack spacing={6} sx={{ width: '100%', maxWidth: '900px' }}>
+            <Stack spacing={3} sx={{ alignItems: 'center' }}>
+              <Typography
+                variant="h1"
+                color="text.secondary"
+                sx={{
+                  fontSize: { xs: '2.1rem', sm: '2.2rem', md: '2.3rem' },
+                  fontWeight: 700,
+                  letterSpacing: '0.05em',
+                  mb: 1,
+                  opacity: 0.8,
+                }}
+              >
+                Hello, I'm
+              </Typography>
+              
               <BlurText
                 text="Ricardo Jr. E. Hermogino"
-                animateBy="letters"  // animate per word ("Full", "Stack", "Developer")
-                direction="top"    // animate from top
-                delay={100}        // delay between each word (ms)
-                stepDuration={0.4} // animation speed
-                className="hero-title" // optional, for custom styling
+                animateBy="letters"
+                direction="top"
+                delay={100}
+                stepDuration={0.3}
+                className="hero-title"
               />
-              <TextType 
-                text={[
-                  "Code + Design = Experiences"
-                ]}
-                typingSpeed={75}
-                pauseDuration={100}
-                showCursor={true}
-                cursorCharacter="_"
-              />
-
+              
+              <Typography
+                variant="h6"
+                color="text.secondary"
+                sx={{ 
+                  maxWidth: { xs: '100%', sm: '600px', md: '700px', lg: '800px' },
+                  mx: 'auto',
+                  lineHeight: { xs: 1.5, sm: 1.6, md: 1.7 },
+                  fontSize: { 
+                    xs: '1rem', 
+                    sm: '1.1rem', 
+                    md: '1.25rem', 
+                    lg: '1.4rem' 
+                  },
+                  px: { xs: 1, sm: 2, md: 0 }, // Extra padding on smaller screens
+                  textAlign: 'center',
+                  fontWeight: 400,
+                  letterSpacing: '0.02em',
+                }}
+              >
+                Welcome to my portfolio! Discover my projects and the ideas I bring to life
+                through code and design.
+              </Typography>
             </Stack>
 
             <Stack
               direction={{ xs: 'column', sm: 'row' }}
               spacing={2}
-              sx={{ justifyContent: 'center', alignItems: 'center' }}
+              sx={{ 
+                justifyContent: 'center', 
+                alignItems: 'center',
+                width: '100%',
+              }}
             >
               <Button
                 variant="contained"
                 size="large"
                 onClick={handleScrollToProjects}
                 sx={{
-                  px: 4,
+                  px: { xs: 3, sm: 4 },
                   py: 1.5,
-                  fontSize: '1.1rem',
+                  fontSize: { xs: '1rem', sm: '1.1rem' },
+                  minWidth: { xs: '200px', sm: 'auto' },
                 }}
               >
                 View My Work
@@ -237,16 +325,24 @@ export function Hero() {
                 size="large"
                 onClick={handleScrollToContact}
                 sx={{
-                  px: 4,
+                  px: { xs: 3, sm: 4 },
                   py: 1.5,
-                  fontSize: '1.1rem',
+                  fontSize: { xs: '1rem', sm: '1.1rem' },
+                  minWidth: { xs: '200px', sm: 'auto' },
                 }}
               >
                 Get In Touch
               </Button>
             </Stack>
 
-            <Stack direction="row" spacing={1} sx={{ justifyContent: 'center' }}>
+            <Stack 
+              direction="row" 
+              spacing={3} 
+              sx={{ 
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
               <IconButton
                 component="a"
                 href="https://github.com"
@@ -255,9 +351,10 @@ export function Hero() {
                 sx={{
                   color: 'text.primary',
                   '&:hover': { color: 'primary.main' },
+                  p: { xs: 1, sm: 1.5 },
                 }}
               >
-                <GitHubIcon />
+                <GitHubIcon sx={{ fontSize: { xs: '2rem', sm: '2.25rem' } }} />
               </IconButton>
               <IconButton
                 component="a"
@@ -267,9 +364,10 @@ export function Hero() {
                 sx={{
                   color: 'text.primary',
                   '&:hover': { color: 'primary.main' },
+                  p: { xs: 1, sm: 1.5 },
                 }}
               >
-                <LinkedInIcon />
+                <LinkedInIcon sx={{ fontSize: {xs: '2rem', sm: '2.25rem' } }} />
               </IconButton>
               <IconButton
                 component="a"
@@ -277,14 +375,17 @@ export function Hero() {
                 sx={{
                   color: 'text.primary',
                   '&:hover': { color: 'primary.main' },
+                  p: { xs: 1, sm: 1.5 },
                 }}
               >
-                <MailIcon />
+                <MailIcon sx={{ fontSize: { xs: '2rem', sm: '2.25rem' } }} />
               </IconButton>
             </Stack>
           </Stack>
         </Box>
+        </AnimatedContent>
       </Container>
+
 
       <Box
         sx={{

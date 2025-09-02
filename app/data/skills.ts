@@ -1,14 +1,18 @@
-import { Code, Database, Smartphone, Globe } from "lucide-react";
+import {  Database, } from "lucide-react";
+import { 
+  Code as CodeIcon,
+  Palette as DesignIcon,
+  Psychology as ProblemSolvingIcon,
+} from "@mui/icons-material";
 
 export const skills = [
-  "React", "Next.js", "TypeScript", "Node.js", "Express.js", 
-  "PostgreSQL", "MongoDB", "Python", "Django", "AWS", 
-  "Docker", "Kubernetes", "Git", "REST APIs", "GraphQL"
+  "React", "Next.js", "JavaScript", "TypeScript", "Node.js", 
+   "MongoDB", "Git", "REST APIs", "Tailwind CSS", "Material-UI", "Figma"
 ];
 
 export const expertise = [
   {
-    icon: Globe,
+    icon: CodeIcon,
     title: "Frontend Development",
     description: "Creating responsive, interactive user interfaces with modern frameworks and libraries."
   },
@@ -18,13 +22,14 @@ export const expertise = [
     description: "Building scalable server-side applications, APIs, and database architectures."
   },
   {
-    icon: Smartphone,
-    title: "Mobile Development",
-    description: "Developing cross-platform mobile applications with React Native and Flutter."
+    title: "UI/UX Design",
+    description: "Designing intuitive and beautiful user experiences that users love",
+    icon: DesignIcon,
   },
   {
-    icon: Code,
-    title: "DevOps & Cloud",
-    description: "Implementing CI/CD pipelines, containerization, and cloud infrastructure management."
-  }
+    title: "Problem Solving",
+    description: "Analyzing complex problems and delivering efficient, maintainable solutions",
+    icon: ProblemSolvingIcon,
+  },
 ];
+
